@@ -1,47 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SeaLifeScan - Image Recognition AI</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-  </head>
-  <body>
-    <nav id="navigation_bar">
-      <img src="logo.png" alt="logo" id="logo" />
-      <a href="login.html" class="login-btn">LogIn</a>
-      <a href="login.html" class="signup-btn">SignUp</a>
-    </nav>
-    <header>
-      <h1><b>SeaLifeScan</b> - Image Recognition AI</h1>
-    </header>
-    <div id="information">
-      <section>
-        <h2>About SeaLifeScan</h2>
-        <p>
-          SeaLifeScan is an innovative image recognition AI technology developed
-          specifically for marine life identification and analysis. Leveraging
-          advanced algorithms and deep learning techniques, SeaLifeScan enables
-          researchers, conservationists, and marine enthusiasts to identify
-          various species of sea creatures accurately and efficiently.
-        </p>
-        <p>
-          From identifying endangered species to monitoring marine ecosystems,
-          SeaLifeScan plays a crucial role in marine conservation efforts
-          worldwide.
-        </p>
-      </section>
-      <div id="drop-area">
-        <h1>File Dropper</h1>
-        <div class="drop-zone" id="dropZone">Drag & Drop files here</div>
-        <input type="file" id="fileInput" multiple />
-        <label for="fileInput" class="file-label"
-          >or click to select files</label
-        >
-        <div id="file-list"></div>
-      </div>
-    </div>
+<title>Home - Sea Life Scan</title>
+<link rel="stylesheet" href="static/style.css" />
+<script src="static/script.js"></script>
+<nav class="h-20 mb-6 shadow flex justify-center items-center w-full">
+  <h1 class="text-lg font-bold">Sea Life Scan</h1>
+</nav>
+<main class="container mx-auto max-w-screen-md">
+  <div>
+    <h2 class="text-center mb-4">Upload an image to scan for sea life</h2>
+    <form id="scan" class="flex justify-center flex-col w-[400px] mx-auto">
+      <div
+        class="relative border-2 border-gray-300 border-dashed rounded-lg p-6"
+        id="dropzone"
+      >
+        <input
+          type="file"
+          class="absolute inset-0 w-full h-full opacity-0 z-50"
+        />
+        <div class="text-center">
+          <img
+            class="mx-auto h-12 w-12"
+            src="https://www.svgrepo.com/show/357902/image-upload.svg"
+            alt=""
+          />
 
-    <script src="test.js"></script>
-  </body>
-</html>
+          <h3 class="mt-2 text-sm font-medium text-gray-900">
+            <label for="file" class="relative cursor-pointer">
+              <span>Drag and drop</span>
+              <span class="text-indigo-600"> or browse</span>
+              <span>to upload</span>
+              <input
+                id="file"
+                name="file"
+                type="file"
+                class="sr-only"
+                accept="png,jpg"
+              />
+            </label>
+          </h3>
+          <p class="mt-1 text-xs text-gray-500">PNG, JPG up to 10MB</p>
+        </div>
+
+        <img src="" class="mt-4 mx-auto max-h-40 hidden" id="preview" />
+      </div>
+      <div class="mt-4">
+        <input
+          type="submit"
+          class="w-full bg-indigo-600 border border-transparent rounded-md py-2 px-4 flex justify-center items-center text-white hover:bg-indigo-700"
+          value="Scan"
+        />
+      </div>
+    </form>
+  </div>
+</main>

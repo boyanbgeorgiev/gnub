@@ -1,11 +1,6 @@
-
-*.pyc
-
-
+node_modules
+.vscode
 __pycache__
-
-
-path_to_output_folder/
-
-
-sharks/
+requirements.txt
+*.jpg
+*.png
