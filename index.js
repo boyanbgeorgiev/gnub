@@ -1,3 +1,12 @@
+class Fish{
+    constructor(){
+
+    }
+}
+
+
+
+
 document.getElementById("submitButton").onclick = function ()
 {
 
