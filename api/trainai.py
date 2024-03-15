@@ -5,11 +5,12 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+from tensorflow.keras.callbacks import EarlyStopping
 import numpy as np
 
 train_dir = 'data/train'
 val_dir = 'data/validation'
-IMG_SIZE = (224, 224)  
+IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
 
 train_datagen = ImageDataGenerator(
@@ -35,13 +36,12 @@ validation_generator = val_datagen.flow_from_directory(
     target_size=IMG_SIZE,
     batch_size=BATCH_SIZE,
     class_mode='categorical')
-
 base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 
 head_model = base_model.output
 head_model = GlobalAveragePooling2D()(head_model)
 head_model = Dense(1024, activation='relu')(head_model)
-head_model = Dropout(0.2)(head_model)  
+head_model = Dropout(0.2)(head_model)
 head_model = Dense(len(train_generator.class_indices), activation='softmax')(head_model)
 
 model = Model(inputs=base_model.input, outputs=head_model)
@@ -58,20 +58,21 @@ history_initial = model.fit(
     validation_steps=validation_generator.n // BATCH_SIZE,
     epochs=10)
 
-for layer in base_model.layers[-20:]:  
-   layer.trainable = True
+for layer in base_model.layers[-20:]:
+    layer.trainable = True
 
-model.compile(optimizer=Adam(learning_rate=0.00001),  
+model.compile(optimizer=Adam(learning_rate=0.00001),
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
-model_checkpoint=tensorflow.keras.callbacks.ModelCheckpoint('checkpoint.ckpt', save_best_only=true, save_weights_only=True)
-early_stopping=tensorflow.keras.callbacks.EarlyStopping(patience=3)
+early_stopping = EarlyStopping(patience=3)
+
 history_fine = model.fit(
     train_generator,
     steps_per_epoch=train_generator.n // BATCH_SIZE,
     validation_data=validation_generator,
     validation_steps=validation_generator.n // BATCH_SIZE,
     epochs=10,
-    callbacks=[model_checkpoint,early_stopping])
+    callbacks=[early_stopping])
+
 model.save('api/shark_model.h5')
