@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./css/main.css -o ./static/style.css --watch"
+    "dev": "npx tailwindcss -i ./css/main.css -o ./static/style.css --watch",
+    "server": "flask --app main.py --debug run"
   },
   "author": "",
   "license": "ISC",
