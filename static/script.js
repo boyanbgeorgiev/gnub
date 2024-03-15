@@ -22,18 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function displayPreview(file) {
+        if (file.type !== 'image/png' && file.type !== 'image/jpeg') {
+            alert('Only PNG and JPEG files are allowed.');
+            return;
+        }
+    
         var reader = new FileReader();
-
+    
         reader.onload = () => {
             var preview = document.getElementById('preview');
             preview.src = reader.result;
             preview.classList.remove('hidden');
-
+    
             // Display file name
             var fileNameDisplay = document.getElementById('file-name');
             fileNameDisplay.textContent = file.name;
         };
-
+    
         reader.readAsDataURL(file);
     }
 
