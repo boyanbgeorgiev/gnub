@@ -13,7 +13,6 @@ def scan_image():
 
     data = request.get_json()
 
-  
     if 'image' not in data:
         return jsonify({'message': 'No image provided'}), 400
 
