@@ -5,6 +5,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 import numpy as np
 
 train_dir = 'data/train'
@@ -65,8 +66,8 @@ model.compile(optimizer=Adam(learning_rate=0.00001),
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
-model_checkpoint=tensorflow.keras.callbacks.ModelCheckpoint('checkpoint.ckpt', save_best_only=true, save_weights_only=True)
-early_stopping=tensorflow.keras.callbacks.EarlyStopping(patience=3)
+model_checkpoint=ModelCheckpoint('checkpoint.ckpt', save_best_only=true, save_weights_only=True)
+early_stopping=EarlyStopping(patience=3)
 history_fine = model.fit(
     train_generator,
     steps_per_epoch=train_generator.n // BATCH_SIZE,
