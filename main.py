@@ -25,6 +25,4 @@ def scan_image():
         return jsonify({'message': 'Invalid image format'}), 400
 
     result = scan(image_data)
-    return jsonify({'message': {
-        'name' : white
-    }})
+    return jsonify({'message':result})
