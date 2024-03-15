@@ -66,11 +66,12 @@ model.compile(optimizer=Adam(learning_rate=0.00001),
               metrics=['accuracy'])
 
 model_checkpoint=tensorflow.keras.callbacks.ModelCheckpoint('checkpoint.ckpt', save_best_only=true, save_weights_only=True)
+early_stopping=tensorflow.keras.callbacks.EarlyStopping(patience=3)
 history_fine = model.fit(
     train_generator,
     steps_per_epoch=train_generator.n // BATCH_SIZE,
     validation_data=validation_generator,
     validation_steps=validation_generator.n // BATCH_SIZE,
     epochs=10,
-    callbacks=[model_checkpoint])
-model.save('shark_model.h5')
+    callbacks=[model_checkpoint,early_stopping])
+model.save('api/shark_model.h5')
