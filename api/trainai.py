@@ -74,4 +74,4 @@ history_fine = model.fit(
     validation_steps=validation_generator.n // BATCH_SIZE,
     epochs=10,
     callbacks=[model_checkpoint,early_stopping])
-model.save('shark_model.h5')
+model.save('api/shark_model.h5')
