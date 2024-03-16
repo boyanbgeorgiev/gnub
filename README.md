@@ -26,7 +26,7 @@ API
 - JS - Image upload system
 - Python Tensorflow and MobileNetV2 - CNN training
 - Python Flask - Local Server and Connection between Frontend and API
-- Json - 
+- Json - Configures npm and Development Environment.
 
 # Инсталация
 
