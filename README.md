@@ -33,7 +33,7 @@ Python библиотеки
 
 	pip install -r .\requirements.txt
 
- Отбор GNUB
+# Отбор GNUB
  - Георги Пастраков 8В
  - Невена Димитрова 8Б
  - Никола Колев 8А
